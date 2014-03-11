@@ -97,7 +97,7 @@ module Export
         xml.name                product.name
         xml.vendor              product.try(:brand)
         xml.description         product.description
-        xml.country_of_origin   product_properties.where(:property_id => 1).first.try(:value)
+        xml.country_of_origin   product_properties.['Страна производитель']
         xml.downloadable false   
       }
     end
