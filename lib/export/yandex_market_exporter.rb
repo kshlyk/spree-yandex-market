@@ -1,5 +1,4 @@
-#!/bin/env ruby
-# encoding: utf-8
+# -*- coding: utf-8 -*-
 require 'nokogiri'
 
 module Export
@@ -98,7 +97,6 @@ module Export
         xml.name                product.name
         xml.vendor              product.try(:brand)
         xml.description         product.description
-        xml.country_of_origin   product_properties.['Страна производитель']
         xml.downloadable false   
       }
     end
