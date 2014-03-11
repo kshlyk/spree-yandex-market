@@ -95,10 +95,9 @@ module Export
         xml.delivery            true
         xml.local_delivery_cost @config.preferred_local_delivery_cost unless @config.preferred_local_delivery_cost.blank?
         xml.name                product.name
-        xml.vendor              product.manufacturer.try(:name)
-        xml.vendorCode          product_properties[@config.preferred_vendor_code]
+        xml.vendor              product.try(:brand)
         xml.description         product.description
-        xml.country_of_origin   product_properties[@config.preferred_country_of_manufacturer] if product_properties[@config.preferred_country_of_manufacturer]
+        xml.country_of_origin   product_properties.where(:property_id => 1).first.try(:value)
         xml.downloadable false   
       }
     end
