@@ -83,7 +83,7 @@ module Export
       xml.price product.price
       xml.currencyId @currencies.first.first
       xml.categoryId cat.id
-      xml.picture path_to_url(CGI.escape(product.images.first.attachment.url(:product, false))) unless product.images.empty?
+      xml.picture path_to_url(CGI.escape(product.images.first.attachment.url(:original, false))) unless product.images.empty?
     end
 
     def offer_simple(xml, product, cat)
