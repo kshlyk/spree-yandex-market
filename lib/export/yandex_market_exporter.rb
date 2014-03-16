@@ -96,7 +96,7 @@ module Export
         xml.local_delivery_cost @config.preferred_local_delivery_cost unless @config.preferred_local_delivery_cost.blank?
         xml.name                product.name
         xml.vendor              product.try(:brand)
-        xml.description         product.description
+        xml.description         HTML::FullSanitizer.new.sanitize(product.description)
         if product.product_properties.where(:property_id => 165).count > 0
           volume = product.product_properties.where(:property_id => 165).first.value.split(' ')
           if volume.count > 1
