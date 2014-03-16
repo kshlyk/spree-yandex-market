@@ -97,6 +97,11 @@ module Export
         xml.name                product.name
         xml.vendor              product.try(:brand)
         xml.description         HTML::FullSanitizer.new.sanitize(product.description)
+        if product.product_properties.where(:property_id => 1).count > 0
+          country = product.product_properties.where(:property_id => 1).first.value
+          xml.country_of_origin country
+        end
+        xml.downloadable false
         if product.product_properties.where(:property_id => 165).count > 0
           volume = product.product_properties.where(:property_id => 165).first.value.split(' ')
           if volume.count > 1
@@ -109,11 +114,6 @@ module Export
             xml.param weight[0], :name => "Масса", :unit => weight[1]
           end
         end
-        if product.product_properties.where(:property_id => 1).count > 0
-          country = product.product_properties.where(:property_id => 1).first.value
-          xml.country_of_origin country
-        end
-        xml.downloadable false   
       }
     end
     
