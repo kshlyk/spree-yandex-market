@@ -83,6 +83,9 @@ module Export
       xml.price product.price
       xml.currencyId @currencies.first.first
       xml.categoryId cat.id
+      if product.ym_category
+        xml.market_category product.ym_category
+      end
       xml.picture path_to_url(CGI.escape(product.images.first.attachment.url(:original, false))) unless product.images.empty?
     end
 
