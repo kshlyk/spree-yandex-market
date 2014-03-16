@@ -89,7 +89,7 @@ module Export
     def offer_simple(xml, product, cat)
       product_properties = { }
       product.product_properties.map {|x| product_properties[x.property_name] = x.value }
-      opt = { :id => product.id,  :available => product.on_sale? }
+      opt = { :id => product.id,  :available => (product.on_sale? && product.available?) }
       xml.offer(opt) {
         shared_xml(xml, product, cat)
         xml.delivery            true
