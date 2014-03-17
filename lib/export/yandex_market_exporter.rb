@@ -95,6 +95,8 @@ module Export
       opt = { :id => product.id,  :available => (product.on_sale? && product.available?) }
       xml.offer(opt) {
         shared_xml(xml, product, cat)
+        xml.store               false
+        xml.pickup              true
         xml.delivery            true
         xml.local_delivery_cost @config.preferred_local_delivery_cost unless @config.preferred_local_delivery_cost.blank?
         xml.name                product.name
