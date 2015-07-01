@@ -1,4 +1,4 @@
-Spree::Core::Engine.routes.prepend do
+Spree::Core::Engine.add_routes do
   namespace :admin do
     resource :yandex_market_settings do
       member do
