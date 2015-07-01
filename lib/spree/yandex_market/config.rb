@@ -12,7 +12,7 @@ module Spree
 
       class << self
         def instance
-          return nil unless ActiveRecord::Base.connection.tables.include?('spree_configurations')
+          return nil unless ActiveRecord::Base.connection.tables.include?('spree_preferences')
           Spree::YandexMarketConfiguration.find_or_create_by_name("Yandex Market configuration")
         end
       end
