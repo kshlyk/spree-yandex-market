@@ -1,6 +1,4 @@
 class Spree::YandexMarketConfiguration < Spree::Preferences::Configuration
-  attr_accessible :preferred_currency, :preferred_short_name, :preferred_full_name, :preferred_url, :preferred_category, :preferred_wares, :preferred_local_delivery_cost
-  
   preference :category,        :string
   preference :currency,        :string
   preference :wares,           :string,  :default => "active"

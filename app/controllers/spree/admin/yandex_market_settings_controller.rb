@@ -63,6 +63,6 @@ class Spree::Admin::YandexMarketSettingsController < Spree::Admin::BaseControlle
   private
 
   def get_config
-    @config = Spree::YandexMarket::Config.instance
+    @config = Spree::YandexMarketConfiguration.new
   end
 end
